@@ -1,0 +1,4 @@
+.health-label, 
+#health {
+    text-transform: capitalize;
+}

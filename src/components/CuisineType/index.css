@@ -1,0 +1,4 @@
+.cuisineType-label,
+#cuisineType {
+    text-transform: capitalize;
+}

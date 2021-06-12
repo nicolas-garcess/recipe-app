@@ -1,0 +1,14 @@
+.meal-container__input:focus {
+    border-color: unset;
+    outline: 1px solid royalblue;
+    box-shadow: 1px 1px 8px 1px royalblue;
+}
+
+.error {
+    display: none;
+}
+
+.show {
+    display: block;
+    color: red;
+}
