@@ -1,16 +1,20 @@
+import useModal from '../../hooks/useModal';
+import InfoModal from '../InfoModal';
 import './index.css';
-import { Link } from 'react-router-dom';
 
 const Card = ({ info }) => {
+  const [isOpenModal, openModal, closeModal] = useModal();
+
   return (
-    <div  className="card">
+    <div className="card">
       <img className="card__img" src={info.recipe.image} alt={info.recipe.label} />
       <div>
         <p className="card__title">{info.recipe.label}</p>
       </div>
-      <div className="card__button">
-        <Link to="#" className="card__info">more info</Link>
+      <div className="card__button" role="button">
+        <button onClick={openModal} className="card__info" info={info}>more info</button>
       </div>
+      <InfoModal isOpen={isOpenModal} closeModal={closeModal} info={info} />
     </div>
   );
 };

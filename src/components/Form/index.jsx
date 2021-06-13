@@ -10,11 +10,12 @@ import health from '../HealthInput/healthList';
 import cuisine from '../CuisineType/cuisineList';
 import makeURL from './url';
 import { useHistory } from 'react-router-dom';
+import Alert from '../Alert';
 
 const formInitialState = {
   meal: {
     value: '',
-    isEmpty: true,
+    isEmpty: false,
     invalid: false,
     invalidMessage: '',
   },
@@ -33,8 +34,14 @@ const formInitialState = {
   },
 };
 
+const initialAlert = {
+  message: '',
+  invalid: false,
+};
+
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
+  const [alertPopUp, setAlertPopUp] = useState(initialAlert);
   //const { recipes } = useStore();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -57,20 +64,34 @@ const Form = () => {
 
         if (data.hits.length > 0) {
           recipes = data.hits;
+
+          dispatch({
+            type: TYPES.FETCH_DATA,
+            payload: recipes,
+          });
+
+          history.push('/recipes');
         } else {
-          recipes = [];
-        }
-
-        dispatch({
-          type: TYPES.FETCH_DATA,
-          payload: recipes,
-        });
-
-        history.push('/recipes');
+          setAlertPopUp({
+            message: 'No results found',
+            invalid: true,
+          });
+        }     
       } catch (error) {
-        alert('There was an error on the query. Keep trying');
+        setAlertPopUp({
+          message: 'There was an error with the query. Keep trying',
+          invalid: true,
+        });
       }
     }
+  };
+
+  const closeAlert = (e) => {
+    e.preventDefault();
+    setAlertPopUp({
+      message: '',
+      invalid: false,
+    });
   };
 
   const isInputCorrect = (input, inputName) => {
@@ -169,6 +190,7 @@ const Form = () => {
         invalidMessage={form.cuisineType.invalidMessage}
       />
       <Search searchInfo={fetchAPI} action={form.search.disable} />
+      <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
     </form>
   );
 };

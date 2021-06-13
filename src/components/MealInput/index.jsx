@@ -3,7 +3,7 @@ import './index.css';
 const MealInput = ({ mealValidation, isEmpty, invalid, invalidMessage }) => {
   return (
     <div className="meal-container">
-      <label htmlFor="meal" className="meal-container__label">Enter a meal</label>
+      <label htmlFor="meal" className="meal-container__label">enter a meal</label>
       <input 
         type="text" 
         id="meal"

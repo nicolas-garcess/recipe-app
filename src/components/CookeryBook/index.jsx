@@ -4,7 +4,7 @@ import Card from '../Card';
 
 const CookeryBook = () => {
   const { recipes } = useStore();
-
+  
   return (
     <div className="cookerybook">
     {recipes.map((item) => (
