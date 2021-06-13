@@ -1,13 +1,13 @@
 import './App.css';
-import Layout from './components/Layout';
-import Form from './components/Form';
+import StoreProvider from './components/Store/StoreProvider';
+import Router from './components/Router';
 
 const App = () => {
   return (
     <div className="App">
-      <Layout>
-        <Form />
-      </Layout>
+      <StoreProvider>
+        <Router />
+      </StoreProvider>
     </div>
   );
 };

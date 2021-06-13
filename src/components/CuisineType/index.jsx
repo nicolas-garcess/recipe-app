@@ -4,8 +4,15 @@ import cuisineList from './cuisineList';
 const CuisineType = ({ name, inputValidation, invalid, invalidMessage }) => {
   return (
     <div className={`${name}-container`}>
-      <label htmlFor={name} className={`${name}-label`}>cuisine type</label>
-      <select id={name} name={name} onChange={inputValidation} aria-describedby={`${name}-help-text`} defaultValue="">
+      <label htmlFor={name} className={`${name}-container__label`}>cuisine type</label>
+      <select
+        id={name}
+        name={name}
+        onChange={inputValidation}
+        aria-describedby={`${name}-help-text`}
+        defaultValue=""
+        className={`${name}-container__input`}
+      >
           <option label="" value="" />
           {cuisineList.map(item => (
             <option

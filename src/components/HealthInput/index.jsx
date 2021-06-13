@@ -4,8 +4,15 @@ import healthList from './healthList';
 const HealthInput = ({ name, inputValidation, invalid, invalidMessage }) => {
   return (
     <div className={`${name}-container`}>
-      <label htmlFor={name} className={`${name}-label`}>{name}</label>
-      <select id={name} name={name} onChange={inputValidation} aria-describedby={`${name}-help-text`} defaultValue="">
+      <label htmlFor={name} className={`${name}-container__label`}>{name}</label>
+      <select
+        id={name}
+        name={name}
+        onChange={inputValidation}
+        aria-describedby={`${name}-help-text`}
+        defaultValue=""
+        className={`${name}-container__input`}
+      >
           <option label="" value="" />
           {healthList.map(item => (
             <option

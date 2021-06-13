@@ -1,12 +1,15 @@
 import './index.css';
+import { useState } from 'react';
+import { useDispatch } from '../Store/StoreProvider';
+import { TYPES } from '../Store/storeReducer';
 import MealInput from '../MealInput';
 import HealthInput from '../HealthInput'
 import CuisineType from '../CuisineType';
 import Search from '../Search';
-import { useState } from 'react';
 import health from '../HealthInput/healthList';
 import cuisine from '../CuisineType/cuisineList';
 import makeURL from './url';
+import { useHistory } from 'react-router-dom';
 
 const formInitialState = {
   meal: {
@@ -32,6 +35,9 @@ const formInitialState = {
 
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
+  //const { recipes } = useStore();
+  const dispatch = useDispatch();
+  const history = useHistory();
   console.log("hola");
 
   const fetchAPI = async (e) => {
@@ -40,15 +46,30 @@ const Form = () => {
     if (isInputCorrect(form.meal, 'meal') 
         && !form.health.invalid
         && !form.cuisineType.invalid) {
-      
-      console.log(makeURL(form));
-      let response = await fetch(makeURL(form),
-        {
-        method: 'get',
-      });
 
-      let data = await response.json();
-      console.log(data);
+      let recipes;
+      try {
+        let response = await fetch(makeURL(form), {
+          method: 'get',
+        });
+
+        let data = await response.json();
+
+        if (data.hits.length > 0) {
+          recipes = data.hits;
+        } else {
+          recipes = [];
+        }
+
+        dispatch({
+          type: TYPES.FETCH_DATA,
+          payload: recipes,
+        });
+
+        history.push('/recipes');
+      } catch (error) {
+        alert('There was an error on the query. Keep trying');
+      }
     }
   };
 

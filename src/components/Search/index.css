@@ -1,0 +1,11 @@
+.search-container__button {
+    width: 130px;
+    height: 45px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    background-color: darkred;
+    cursor: pointer;
+}
