@@ -42,10 +42,11 @@ const initialAlert = {
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
   const [alertPopUp, setAlertPopUp] = useState(initialAlert);
-  //const { recipes } = useStore();
+  // const { recipes } = useStore();
   const dispatch = useDispatch();
   const history = useHistory();
   console.log("hola");
+  //console.log(localStorage.getItem('recipes'));
 
   const fetchAPI = async (e) => {
     e.preventDefault();
@@ -54,21 +55,20 @@ const Form = () => {
         && !form.health.invalid
         && !form.cuisineType.invalid) {
 
-      try {
+      try {        
         let response = await fetch(makeURL(form), {
           method: 'get',
         });
 
         let data = await response.json();
-
+        
         if (data.hits.length > 0) {
           let recipes = data.hits;
-
+          
           dispatch({
             type: TYPES.FETCH_DATA,
             payload: recipes,
           });
-
           history.push('/recipes');
         } else {
           setAlertPopUp({

@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagination li {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid rgba(128, 128, 128, 0.424);
+    background-color: rgb(255, 250, 240);
+}
+
+.pagination li:hover {
+    outline: 3px solid rgb(139, 0, 0);
+    box-shadow: 3px 3px 8px 3px rgb(128, 128, 128);
+}
+
+.page-link {
+    font-size: 1.4em;
+    line-height: 30px;
+    color: rgb(139, 0, 0);
+    text-decoration: none;
+}

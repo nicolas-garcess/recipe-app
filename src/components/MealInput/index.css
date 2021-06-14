@@ -7,7 +7,7 @@
 
 .meal-container__label {
     display: block;
-    font-size: 30px;
+    font-size: 1em;
     font-weight: bold;
     color: darkred;
     text-transform: capitalize;
@@ -21,15 +21,15 @@
     padding-left: 15px;
     border: 1px solid rgba(128, 128, 128, 0.452);;
     border-radius: 20px;
-    background-color: #fffaf0;
+    background-color: rgb(255, 250, 240);
 
     font-size: 1.5em;
 }
 
 .meal-container__input:focus {
     border-color: unset;
-    outline: 1px solid darkred;
-    box-shadow: 1px 1px 8px 1px darkred;
+    outline: 1px solid rgb(139, 0, 0);
+    box-shadow: 1px 1px 8px 1px rgb(139, 0, 0);
 }
 
 .error {
@@ -38,10 +38,9 @@
 
 .show {
     display: block;
-    font-size: 20px;
+    font-size: 1.3em;
     width: 200px;
     height: 25px;
-    /* background-color: red; */
     color: red;
     font-weight: bold;
     margin-top: 5px;

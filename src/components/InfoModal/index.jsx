@@ -23,13 +23,18 @@ const InfoModal = ({ info, isOpen, closeModal }) => {
             <div className="container-ingredients">
               <h4 className="ingredient-title">ingredients</h4>
 
-              {info.recipe.ingredientLines.map((item) => (
-                <p key={item} className="ingredient">{item}</p>
+              {info.recipe.ingredientLines.map((item, index) => (
+                <p key={index} className="ingredient">{item}</p>
               ))}
             </div>
           </div>
           <div className="external-link">
-            <a href={info.recipe.url} target="blank"> full recipe </a>
+            <a
+              href={info.recipe.url}
+              aria-label={`Read more about ${info.recipe.label} recipe`} target="blank"
+            > 
+              full recipe
+            </a>
           </div>
         </main>
       </article>

@@ -3,7 +3,9 @@ import './index.css';
 const MealInput = ({ mealValidation, isEmpty, invalid, invalidMessage }) => {
   return (
     <div className="meal-container">
-      <label htmlFor="meal" className="meal-container__label">enter a meal</label>
+      <h1>
+        <label htmlFor="meal" className="meal-container__label">enter a meal</label>
+      </h1>
       <input 
         type="text" 
         id="meal"
@@ -13,6 +15,7 @@ const MealInput = ({ mealValidation, isEmpty, invalid, invalidMessage }) => {
         aria-invalid={invalid}
         aria-describedby="meal-help-text" 
         required
+        placeholder="required*"
         onChange={mealValidation}
       />
       <span 

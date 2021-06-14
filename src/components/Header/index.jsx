@@ -1,3 +1,4 @@
+import GoBack from '../GoBack';
 import './index.css';
 
 const Header = ({ title }) => {
@@ -6,6 +7,7 @@ const Header = ({ title }) => {
       <div>
         <h1 className="title">{title}</h1>
       </div>
+      <GoBack />
     </header>
   );
 };

@@ -15,6 +15,7 @@ const Modal = ({ isOpen, closeModal, children }) => {
             alt="close-icon"
             className="close-icon"
             title="Close"
+            role="button"
           />
         </div>
         {children}
