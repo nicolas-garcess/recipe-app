@@ -1,0 +1,41 @@
+.modal {
+    background-color: rgba(0, 0, 0, .75);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    overflow-y: scroll;
+}
+
+.modal__dialog {
+    background-color: #fffaf0;
+    padding: 10px;
+    width: 90%;
+    height: 95%;
+    position: relative;
+}
+
+@media screen and (min-width: 1000px) {
+    .modal__dialog {
+        width: 65%;
+    }
+}
+
+.modal-open {
+    display: grid;
+    place-items: center;
+}
+
+.close-container {
+    position: absolute;
+    right: 3px;
+    top: 8px;
+}
+
+.close-icon {
+    width: 30px;
+    cursor: pointer;
+}

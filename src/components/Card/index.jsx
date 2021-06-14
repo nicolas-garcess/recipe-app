@@ -12,9 +12,9 @@ const Card = ({ info }) => {
         <p className="card__title">{info.recipe.label}</p>
       </div>
       <div className="card__button" role="button">
-        <button onClick={openModal} className="card__info" info={info}>more info</button>
+        <button onClick={openModal} className="card__info">more info</button>
       </div>
-      <InfoModal isOpen={isOpenModal} closeModal={closeModal} info={info} />
+      <InfoModal info={info} isOpen={isOpenModal} closeModal={closeModal} />
     </div>
   );
 };

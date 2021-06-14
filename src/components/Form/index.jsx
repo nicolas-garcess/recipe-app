@@ -54,7 +54,6 @@ const Form = () => {
         && !form.health.invalid
         && !form.cuisineType.invalid) {
 
-      let recipes;
       try {
         let response = await fetch(makeURL(form), {
           method: 'get',
@@ -63,7 +62,7 @@ const Form = () => {
         let data = await response.json();
 
         if (data.hits.length > 0) {
-          recipes = data.hits;
+          let recipes = data.hits;
 
           dispatch({
             type: TYPES.FETCH_DATA,
@@ -83,6 +82,11 @@ const Form = () => {
           invalid: true,
         });
       }
+    } else {
+      setAlertPopUp({
+        message: 'Invalid format',
+        invalid: true,
+      });
     }
   };
 
@@ -108,7 +112,7 @@ const Form = () => {
   };
 
   const isAnInvalidFormat = (input) => {
-    const FORMAT_SPECIAL_CHARS = /[ `!@#$%^&*()_+\-=[\]{};:"\\|,.<>/¿?~]/;
+    const FORMAT_SPECIAL_CHARS = /[`!@#$%^&*()_+\-=[\]{};:"\\|,.<>/¿?~]/;
     const FORMAT_NUMBERS = /\d/;
 
     return FORMAT_SPECIAL_CHARS.test(input.value) 

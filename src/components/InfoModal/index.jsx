@@ -1,23 +1,17 @@
+import Modal from '../Modal';
 import './index.css';
 
-const InfoModal = ({ isOpen, closeModal, info }) => {
-
-  const handleModalDialogClick = (e) => {
-    e.stopPropagation();
-  };
+const InfoModal = ({ info, isOpen, closeModal }) => {
 
   return (
-    <div className={`modal ${isOpen && "modal-open"}`} onClick={closeModal}>
-      <article className="modal__dialog" onClick={handleModalDialogClick}>
+    <Modal isOpen={isOpen} closeModal={closeModal}>
+      <article className="article">
         <header className="article-header">
           <h2 className="article-title">{info.recipe.label}</h2>
-          <div className="close-container">
-            <img src="https://www.materialui.co/materialIcons/navigation/close_black_256x256.png" alt="close-icon" className="close-icon" onClick={(e) => closeModal(e)}/>
-          </div>
         </header>
         <main className="article-main">
           <div className="upper-main">
-            <div>
+            <div className="container-left">
               <div className="container-cuisine">
                 <h3 className="cuisine">cuisine type</h3>
                 <p className="types">{info.recipe.cuisineType}</p>
@@ -39,7 +33,7 @@ const InfoModal = ({ isOpen, closeModal, info }) => {
           </div>
         </main>
       </article>
-    </div>
+    </Modal>  
   );
 };
 

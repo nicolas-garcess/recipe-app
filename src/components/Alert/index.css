@@ -15,9 +15,35 @@
     width: 80%;
     height: 200px;
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media screen and (min-width: 501px) {
+    .alert__dialog {
+        width: 390px;
+    }
 }
 
 .alert-open {
     display: grid;
     place-items: center;
+}
+
+.alert__message {
+    font-size: 25px;
+    padding: 5px;
+}
+
+.alert__button {
+    height: 40px;
+    width: 100px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(255, 250, 240);
+    font-size: 20px;
+    color: rgb(139, 0, 0);
+    cursor: pointer;
 }
