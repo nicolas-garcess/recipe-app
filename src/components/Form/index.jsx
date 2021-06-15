@@ -45,46 +45,50 @@ const Form = () => {
   // const { recipes } = useStore();
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log("hola");
-  //console.log(localStorage.getItem('recipes'));
+  //console.log("hola");
 
-  const fetchAPI = async (e) => {
+  const searchRecipe = async (e) => {
     e.preventDefault();
     
     if (isInputCorrect(form.meal, 'meal') 
         && !form.health.invalid
         && !form.cuisineType.invalid) {
 
-      try {        
-        let response = await fetch(makeURL(form), {
-          method: 'get',
-        });
-
-        let data = await response.json();
-        
-        if (data.hits.length > 0) {
-          let recipes = data.hits;
+          const data = await fetchAPI();
           
-          dispatch({
-            type: TYPES.FETCH_DATA,
-            payload: recipes,
-          });
-          history.push('/recipes');
-        } else {
-          setAlertPopUp({
-            message: 'No results found',
-            invalid: true,
-          });
-        }     
-      } catch (error) {
-        setAlertPopUp({
-          message: 'There was an error with the query. Keep trying',
-          invalid: true,
-        });
-      }
+          if (data.hits.length > 0) {
+            let recipes = data.hits;
+            
+            dispatch({
+              type: TYPES.FETCH_DATA,
+              payload: recipes,
+            });
+            history.push('/recipes');
+          } else {
+            setAlertPopUp({
+              message: 'No results found',
+              invalid: true,
+            });
+          }
     } else {
       setAlertPopUp({
         message: 'Invalid format',
+        invalid: true,
+      });
+    }
+  };
+
+  const fetchAPI = async () => {
+    try {      
+      let response = await fetch(makeURL(form), {
+        method: 'get',
+      });
+
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      setAlertPopUp({
+        message: 'There was an error with the query. Keep trying',
         invalid: true,
       });
     }
@@ -193,7 +197,7 @@ const Form = () => {
         invalid={form.cuisineType.invalid}
         invalidMessage={form.cuisineType.invalidMessage}
       />
-      <Search searchInfo={fetchAPI} action={form.search.disable} />
+      <Search searchInfo={searchRecipe} action={form.search.disable} />
       <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
     </form>
   );

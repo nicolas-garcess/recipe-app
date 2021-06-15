@@ -8,7 +8,7 @@ const Search = ({ searchInfo, action }) => {
         disabled={action}
         className="search-container__button"
       >
-        Search
+        search
       </button>
     </div>
   );
