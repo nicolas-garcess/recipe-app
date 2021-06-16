@@ -56,7 +56,9 @@ const Form = () => {
 
           const data = await fetchAPI();
           
-          if (data.hits.length > 0) {
+          if (data === null) {
+            handleAlertPopUp('There was an error with the query. Keep trying', true);
+          } else if (data.hits.length > 0) {    
             let recipes = data.hits;
             
             dispatch({
@@ -65,16 +67,10 @@ const Form = () => {
             });
             history.push('/recipes');
           } else {
-            setAlertPopUp({
-              message: 'No results found',
-              invalid: true,
-            });
+            handleAlertPopUp('No results found', true);
           }
     } else {
-      setAlertPopUp({
-        message: 'Invalid format',
-        invalid: true,
-      });
+      handleAlertPopUp('Invalid format', true);
     }
   };
 
@@ -83,14 +79,15 @@ const Form = () => {
       let response = await fetch(makeURL(form), {
         method: 'get',
       });
-
-      let data = await response.json();
-      return data;
+      //console.log(response)
+      if (response.ok) {
+        let data = await response.json();
+        return data;
+      } else {
+        return null;
+      }   
     } catch (error) {
-      setAlertPopUp({
-        message: 'There was an error with the query. Keep trying',
-        invalid: true,
-      });
+      return null;
     }
   };
 
@@ -99,6 +96,13 @@ const Form = () => {
     setAlertPopUp({
       message: '',
       invalid: false,
+    });
+  };
+
+  const handleAlertPopUp = (message, invalid) => {
+    setAlertPopUp({
+      message,
+      invalid,
     });
   };
 
@@ -148,9 +152,8 @@ const Form = () => {
     let list = chooseList(input.name);
     if (list !== undefined) {
       const decision = list.some((item) => item.value === input.value);
-      
+
       if (!decision && input.value !== '') {
-        console.log("entra");
         setForm({
           ...form,
           [input.name]: {value: '', invalid: true, invalidMessage: 'Invalid option',},
@@ -178,27 +181,29 @@ const Form = () => {
   };
 
   return (
-    <form className="form">
-      <MealInput
-        mealValidation={handleMealChange}
-        isEmpty={form.meal.isEmpty}
-        invalid={form.meal.invalid}
-        invalidMessage={form.meal.invalidMessage}
-      />
-      <HealthInput
-        name="health"
-        inputValidation={handleListChange}
-        invalid={form.health.invalid}
-        invalidMessage={form.health.invalidMessage}
-      />
-      <CuisineType
-        name="cuisineType"
-        inputValidation={handleListChange}
-        invalid={form.cuisineType.invalid}
-        invalidMessage={form.cuisineType.invalidMessage}
-      />
-      <Search searchInfo={searchRecipe} action={form.search.disable} />
-      <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
+    <form className="form" id="form">
+      <fieldset>
+        <MealInput
+          mealValidation={handleMealChange}
+          isEmpty={form.meal.isEmpty}
+          invalid={form.meal.invalid}
+          invalidMessage={form.meal.invalidMessage}
+        />
+        <HealthInput
+          name="health"
+          inputValidation={handleListChange}
+          invalid={form.health.invalid}
+          invalidMessage={form.health.invalidMessage}
+        />
+        <CuisineType
+          name="cuisineType"
+          inputValidation={handleListChange}
+          invalid={form.cuisineType.invalid}
+          invalidMessage={form.cuisineType.invalidMessage}
+        />
+        <Search searchInfo={searchRecipe} action={form.search.disable} />
+        <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
+      </fieldset>
     </form>
   );
 };

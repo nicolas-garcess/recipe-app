@@ -1,8 +1,11 @@
 .form {
     height: 100%;
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+fieldset {
+    border: 0;
 }

@@ -4,7 +4,7 @@ import Layout from '../Layout';
 import Header from '../Header';
 import CookeryBook from '../CookeryBook';
 import Main from '../Main';
-// import Error from '../Error404';
+import Error from '../Error';
 
 const Router = () => {
   return (
@@ -26,7 +26,7 @@ const Router = () => {
           </Layout>
         </Route>
         <Route path="*">
-          {/* <Error /> */}
+          <Error />
         </Route>
       </Switch>
     </BRouter>

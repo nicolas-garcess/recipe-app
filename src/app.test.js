@@ -12,8 +12,8 @@ const setUp = () => {
   return { meal, health, cuisine, search, form, component};
 };
 
-describe('Form validation', () => {
-  test('render form', () => {
+describe('App validation', () => {
+  test('Render App', () => {
       const { meal, health, cuisine, search, form } = setUp();
 
       expect(meal).toBeInTheDocument();

@@ -1,0 +1,29 @@
+.error404 {
+    background-color:rgb(255, 250, 240);
+    min-height: 100vh;
+    color: rgb(139, 0, 0);
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+
+}
+
+.error404__title {
+    margin: 0;
+    font-size: 5em;
+}
+
+.error404__subtitle {
+    width: 300px;
+    margin: 20px;
+    font-size: 3em;
+}
+
+.home {
+    color: black;
+    font-size: 2em;
+}
