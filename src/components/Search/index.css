@@ -7,6 +7,10 @@
     font-size: 1.4em;
     text-transform: capitalize;
     color: white;
-    background-color: darkred;
+    background-color: rgba(139, 0, 0, 0.568);
+}
+
+.enable {
+    background-color: rgb(139, 0, 0);
     cursor: pointer;
 }

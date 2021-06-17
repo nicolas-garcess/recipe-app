@@ -15,8 +15,12 @@
 }
 
 .pagination li:hover {
+    outline: 1px solid rgb(139, 0, 0);
+    box-shadow: 1px 1px 10px 1px rgb(128, 128, 128);
+}
+
+.selected-page {
     outline: 3px solid rgb(139, 0, 0);
-    box-shadow: 3px 3px 8px 3px rgb(128, 128, 128);
 }
 
 .page-link {

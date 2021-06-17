@@ -33,12 +33,12 @@ describe('<MealInput /> validation', () => {
 
   test('Invalid meal', () => {
     const meal = component.container.querySelector('#meal');
-    const button = component.getByText('search');
+    const search = component.getByText('search');
 
     fireEvent.change(meal, {
       target: {value: 'meat-'}
     });
-    fireEvent.click(button);
+    fireEvent.click(search);
 
     const error = component.container.querySelector('.show');
     const message = component.container.querySelector('.alert__message');
@@ -72,12 +72,12 @@ describe('<MealInput /> validation', () => {
     );
 
     const meal = component.container.querySelector('#meal');
-    const button = component.getByText('search');
+    const search = component.getByText('search');
 
     fireEvent.change(meal, {
         target: {value: 'abcdefg'}
     });
-    fireEvent.click(button);
+    fireEvent.click(search);
     
     await waitFor(() => screen.getByText('No results found'));
 
@@ -94,12 +94,12 @@ describe('<MealInput /> validation', () => {
     );
 
     const meal = component.container.querySelector('#meal');
-    const button = component.getByText('search');
+    const search = component.getByText('search');
 
     fireEvent.change(meal, {
         target: {value: 'meat'}
     });
-    fireEvent.click(button);
+    fireEvent.click(search);
     
     await waitFor(() => screen.getByText('There was an error with the query. Keep trying'));
 
@@ -119,7 +119,7 @@ describe('<MealInput /> validation', () => {
 
     const meal = component.container.querySelector('#meal');
     const cuisine = component.container.querySelector('#cuisineType');
-    const button = component.getByText('search');
+    const search = component.getByText('search');
 
     fireEvent.change(meal, {
       target: {value: 'jellyfish'}
@@ -127,7 +127,7 @@ describe('<MealInput /> validation', () => {
     fireEvent.change(cuisine, {
       target: {value: 'Indian'}
     });
-    fireEvent.click(button);
+    fireEvent.click(search);
 
     history.push('/recipes');
     

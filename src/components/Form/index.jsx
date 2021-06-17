@@ -172,7 +172,7 @@ const Form = () => {
           invalid={form.cuisineType.invalid}
           invalidMessage={form.cuisineType.invalidMessage}
         />
-        <Search searchInfo={searchRecipe} action={form.search.disable} />
+        <Search searchInfo={searchRecipe} isDisable={form.search.disable} />
         <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
       </fieldset>
     </form>

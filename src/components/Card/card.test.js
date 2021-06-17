@@ -42,7 +42,7 @@ describe('<Card /> validation', () => {
 
     const meal = component.container.querySelector('#meal');
     const cuisine = component.container.querySelector('#cuisineType');
-    const button = component.getByText('search');
+    const search = component.getByText('search');
 
     fireEvent.change(meal, {
       target: {value: 'jellyfish'}
@@ -50,7 +50,7 @@ describe('<Card /> validation', () => {
     fireEvent.change(cuisine, {
       target: {value: 'Indian'}
     });
-    fireEvent.click(button);
+    fireEvent.click(search);
 
     history.push('/recipes')
     

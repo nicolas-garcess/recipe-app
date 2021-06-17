@@ -3,3 +3,6 @@
   height: 100%;
 }
 
+.visuallyhidden {
+  display: none;
+}

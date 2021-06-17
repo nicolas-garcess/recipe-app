@@ -19,7 +19,7 @@ const CookeryBook = () => {
   const changePage = (pageNumber, e) => {
     e.preventDefault();
 
-    setCurrentPage(pageNumber)
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const CookeryBook = () => {
         recipesPerPage={recipesPerPage}
         allRecipe={data.length}
         paginate={changePage}
+        curretPage={currentPage}
       />
     </div>
   );
