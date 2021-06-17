@@ -10,4 +10,5 @@
     font-size: 4em;
     margin: 10px;
     color: darkred;
+    text-transform: capitalize;
 }

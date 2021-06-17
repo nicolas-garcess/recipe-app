@@ -2,6 +2,8 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import App from '../../App';
+import { createMemoryHistory } from 'history';
+import recipe from './dataTest';
 
 describe('<MealInput /> validation', () => {
   let component;
@@ -104,5 +106,33 @@ describe('<MealInput /> validation', () => {
     const alertMessage = component.container.querySelector('.alert__message');
  
     expect(alertMessage.innerHTML).toBe('There was an error with the query. Keep trying');
+  });
+
+  test('Good request', async () => {
+    server.use(
+      rest.get('https://api.edamam.com/api/recipes/v2', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(recipe));
+      })
+    );
+
+    const history = createMemoryHistory();
+
+    const meal = component.container.querySelector('#meal');
+    const cuisine = component.container.querySelector('#cuisineType');
+    const button = component.getByText('search');
+
+    fireEvent.change(meal, {
+      target: {value: 'jellyfish'}
+    });
+    fireEvent.change(cuisine, {
+      target: {value: 'Indian'}
+    });
+    fireEvent.click(button);
+
+    history.push('/recipes');
+    
+    await waitFor(() => screen.getByText('results'));
+ 
+    expect(history.location.pathname).toBe('/recipes');
   });
 });

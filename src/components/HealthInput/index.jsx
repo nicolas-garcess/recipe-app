@@ -1,5 +1,5 @@
 import './index.css';
-import healthList from './healthList';
+import healthList from '../../services/listTypes/healthList';
 
 const HealthInput = ({ name, inputValidation, invalid, invalidMessage }) => {
   return (

@@ -1,5 +1,5 @@
 import './index.css';
-import cuisineList from './cuisineList';
+import cuisineList from '../../services/listTypes/cuisineList';
 
 const CuisineType = ({ name, inputValidation, invalid, invalidMessage }) => {
   return (

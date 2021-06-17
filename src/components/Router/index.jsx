@@ -19,7 +19,7 @@ const Router = () => {
         </Route>
         <Route exact path="/recipes">
           <Layout>
-            <Header title="Results" />
+            <Header title="results" />
             <Main> 
               <CookeryBook />
             </Main>

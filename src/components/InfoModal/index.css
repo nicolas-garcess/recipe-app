@@ -4,18 +4,18 @@
     position: relative;
 }
 
-.article-header {
+.article__header {
     height: 10%;
     position: relative;
 }
 
-.article-title {
+.article__title {
     font-size: 2em;
     color: darkred;
     margin: 10px 0 0;
 }
 
-.article-main {
+.article__main {
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-    .article-title {
+    .article__title {
         font-size: 2.5em;
     }
 

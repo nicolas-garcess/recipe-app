@@ -2,15 +2,14 @@ import './index.css';
 import { useState } from 'react';
 import { useDispatch } from '../Store/StoreProvider';
 import { TYPES } from '../Store/storeReducer';
+import useRedirectPath from '../../hooks/useRedirectPath';
 import MealInput from '../MealInput';
 import HealthInput from '../HealthInput'
 import CuisineType from '../CuisineType';
 import Search from '../Search';
-import health from '../HealthInput/healthList';
-import cuisine from '../CuisineType/cuisineList';
-import makeURL from './url';
-import { useHistory } from 'react-router-dom';
 import Alert from '../Alert';
+import fetchAPI from '../../services/api/fetchAPI';
+import chooseList from '../../services/listTypes';
 
 const formInitialState = {
   meal: {
@@ -42,9 +41,8 @@ const initialAlert = {
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
   const [alertPopUp, setAlertPopUp] = useState(initialAlert);
-  // const { recipes } = useStore();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const setPath = useRedirectPath();
   //console.log("hola");
 
   const searchRecipe = async (e) => {
@@ -54,7 +52,7 @@ const Form = () => {
         && !form.health.invalid
         && !form.cuisineType.invalid) {
 
-          const data = await fetchAPI();
+          const data = await fetchAPI(form);
           
           if (data === null) {
             handleAlertPopUp('There was an error with the query. Keep trying', true);
@@ -65,29 +63,13 @@ const Form = () => {
               type: TYPES.FETCH_DATA,
               payload: recipes,
             });
-            history.push('/recipes');
+
+            setPath('/recipes');
           } else {
             handleAlertPopUp('No results found', true);
           }
     } else {
       handleAlertPopUp('Invalid format', true);
-    }
-  };
-
-  const fetchAPI = async () => {
-    try {      
-      let response = await fetch(makeURL(form), {
-        method: 'get',
-      });
-      //console.log(response)
-      if (response.ok) {
-        let data = await response.json();
-        return data;
-      } else {
-        return null;
-      }   
-    } catch (error) {
-      return null;
     }
   };
 
@@ -166,17 +148,6 @@ const Form = () => {
           search: {disable: form.meal.isEmpty},
         });
       }
-    }
-  };
-
-  const chooseList = (listName) => {
-    switch (listName) {
-      case 'health':
-        return health;
-      case 'cuisineType':
-        return cuisine;
-      default:
-        break;
     }
   };
 

@@ -6,10 +6,10 @@ const InfoModal = ({ info, isOpen, closeModal }) => {
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
       <article className="article">
-        <header className="article-header">
-          <h2 className="article-title">{info.recipe.label}</h2>
+        <header className="article__header">
+          <h2 className="article__title">{info.recipe.label}</h2>
         </header>
-        <main className="article-main">
+        <main className="article__main">
           <div className="upper-main">
             <div className="container-left">
               <div className="container-cuisine">
