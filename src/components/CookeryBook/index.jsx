@@ -4,17 +4,22 @@ import './index.css';
 import Card from '../Card';
 import Pagination from '../Pagination';
 
+let currentRecipes = [];
+let data = [];
+
 const CookeryBook = () => {
   const local = localStorage.getItem('recipes');
   const { recipes } = useStore();
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(4);
-
-  const data = local !== null ? JSON.parse(local) : recipes;
-
-  const indexOfLastRecipe = currentPage * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = data.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  
+  (() => {
+    data = local !== null ? JSON.parse(local) : recipes;
+  
+    const indexOfLastRecipe = currentPage * recipesPerPage;
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+    currentRecipes = data.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  })();
 
   const changePage = (pageNumber, e) => {
     e.preventDefault();
