@@ -12,6 +12,7 @@ const CuisineType = ({ name, inputValidation, invalid, invalidMessage }) => {
         aria-describedby={`${name}-help-text`}
         defaultValue=""
         className={`${name}-container__input`}
+        data-testid="list-change"
       >
           <option label="" value="" />
           {cuisineList.map(item => (
@@ -28,6 +29,7 @@ const CuisineType = ({ name, inputValidation, invalid, invalidMessage }) => {
         id={`${name}-help-text`}
         className={`error ${invalid  ? "show": ""}`}
         role="alert"
+        data-testid="error-message"
       >
         {invalidMessage}
       </span>

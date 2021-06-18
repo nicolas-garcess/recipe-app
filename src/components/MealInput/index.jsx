@@ -3,9 +3,7 @@ import './index.css';
 const MealInput = ({ mealValidation, isEmpty, invalid, invalidMessage }) => {
   return (
     <div className="meal-container">
-      <h1>
-        <label htmlFor="meal" className="meal-container__label">enter a meal</label>
-      </h1>
+      <label htmlFor="meal" className="meal-container__label">enter a meal</label>
       <input 
         type="text" 
         id="meal"
@@ -17,11 +15,13 @@ const MealInput = ({ mealValidation, isEmpty, invalid, invalidMessage }) => {
         required
         placeholder="required*"
         onChange={mealValidation}
+        data-testid="meal-change"
       />
       <span 
         id="meal-help-text"
         className={`error ${isEmpty || invalid  ? "show": ""}`}
         role="alert"
+        data-testid="error-message"
       >
         {invalidMessage}
       </span>

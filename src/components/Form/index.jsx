@@ -42,7 +42,7 @@ const Form = () => {
   const [form, setForm] = useState(formInitialState);
   const [alertPopUp, setAlertPopUp] = useState(initialAlert);
   const dispatch = useDispatch();
-  const setPath = useRedirectPath();
+  const { setPath } = useRedirectPath();
   //console.log("hola");
 
   const searchRecipe = async (e) => {
@@ -154,6 +154,7 @@ const Form = () => {
   return (
     <form className="form" id="form">
       <fieldset>
+        <legend><h1 className="visuallyhidden form-title">find your recipe</h1></legend>
         <MealInput
           mealValidation={handleMealChange}
           isEmpty={form.meal.isEmpty}
@@ -173,7 +174,11 @@ const Form = () => {
           invalidMessage={form.cuisineType.invalidMessage}
         />
         <Search searchInfo={searchRecipe} isDisable={form.search.disable} />
-        <Alert message={alertPopUp.message} invalid={alertPopUp.invalid} closeAlert={closeAlert} />
+        <Alert
+          message={alertPopUp.message}
+          invalid={alertPopUp.invalid}
+          closeAlert={closeAlert}
+        />
       </fieldset>
     </form>
   );

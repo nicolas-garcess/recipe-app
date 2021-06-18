@@ -7,6 +7,7 @@ const Search = ({ searchInfo, isDisable }) => {
         onClick={(e) => searchInfo(e)}
         disabled={isDisable}
         className={`search-container__button ${!isDisable ? "enable" : ""}`}
+        data-testid="search-button"
       >
         search
       </button>

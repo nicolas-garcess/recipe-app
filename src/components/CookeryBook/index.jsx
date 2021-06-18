@@ -4,17 +4,17 @@ import './index.css';
 import Card from '../Card';
 import Pagination from '../Pagination';
 
-let currentRecipes = [];
 let data = [];
+let currentRecipes = [];
 
 const CookeryBook = () => {
-  const local = localStorage.getItem('recipes');
+  const storage = sessionStorage.getItem('recipes');
   const { recipes } = useStore();
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(4);
   
   (() => {
-    data = local !== null ? JSON.parse(local) : recipes;
+    data = storage !== null ? JSON.parse(storage) : recipes;
   
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
@@ -28,13 +28,14 @@ const CookeryBook = () => {
   };
 
   useEffect(() => {
-    if (local === null) {
-      localStorage.setItem('recipes', JSON.stringify(recipes));
+    if (storage === null) {
+      sessionStorage.setItem('recipes', JSON.stringify(recipes));
     }
     return () => {
-      localStorage.removeItem('recipes');
-    }
-  }, [recipes, local]);
+      sessionStorage.removeItem('recipes');
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recipes]);
   
   return (
     <div className="cookerybook">

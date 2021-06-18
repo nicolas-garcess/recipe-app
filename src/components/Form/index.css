@@ -9,3 +9,7 @@
 fieldset {
     border: 0;
 }
+
+.form-title {
+    text-transform: capitalize;
+}

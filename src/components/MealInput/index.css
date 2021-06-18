@@ -7,9 +7,9 @@
 
 .meal-container__label {
     display: block;
-    font-size: 1em;
+    font-size: 1.8em;
     font-weight: bold;
-    color: darkred;
+    color: rgb(139, 0, 0);
     text-transform: capitalize;
 }
 
@@ -41,7 +41,7 @@
     font-size: 1.3em;
     width: 200px;
     height: 25px;
-    color: red;
+    color: rgb(255, 0, 0);
     font-weight: bold;
     margin-top: 5px;
 }

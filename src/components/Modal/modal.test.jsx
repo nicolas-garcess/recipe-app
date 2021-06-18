@@ -4,8 +4,44 @@ import { setupServer } from 'msw/node';
 import App from '../../App';
 import { createMemoryHistory } from 'history';
 import recipe from '../MealInput/dataTest';
+import Modal from './';
 
-describe('<InfoModal /> validation', () => {
+describe('<Modal /> validation', () => {
+  test('Close modal by click on icon', () => {
+    const closeMock = jest.fn();
+    render(<Modal isOpen={true} closeModal={closeMock}><h1>Mock title</h1></Modal>);
+
+    const closeContainer = screen.getByTestId('close-container');
+    fireEvent.click(closeContainer);
+
+    expect(closeMock).toHaveBeenCalled();
+  });
+
+  test('Close modal by click outside', () => {
+    const closeMock = jest.fn();
+    render(<Modal isOpen={true} closeModal={closeMock}><h1>Mock title</h1></Modal>);
+
+    const modal = screen.getByTestId('modal');
+    fireEvent.click(modal);
+
+    expect(closeMock).toHaveBeenCalled();
+  });
+
+  /*test('Modal is still open', () => {
+    const closeMock = jest.fn();
+    const stopPropagationMock = jest.fn();
+    render(<Modal isOpen={true} closeModal={closeMock}><h1>Mock title</h1></Modal>);
+
+    const dialog = screen.getByTestId('modal__dialog');
+    fireEvent.click(dialog);
+
+    expect(stopPropagationMock).to
+
+  });*/
+
+});
+
+describe.skip('<Modal /> revalidation', () => {
   let component;
   beforeEach(() => {
     component = render(
@@ -22,17 +58,17 @@ describe('<InfoModal /> validation', () => {
   beforeAll(() => {
     server.listen();
   });
-
-  afterEach(() => {
-    server.resetHandlers();
-  });
   
   afterAll(() => {
     server.close();
   });
- 
   
-test('Modal render', async () => {
+  afterEach(() => {
+    component = null;
+    server.resetHandlers();
+  });
+  
+  test('Modal close', async () => {
     server.use(
       rest.get('https://api.edamam.com/api/recipes/v2', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(recipe));
@@ -60,19 +96,11 @@ test('Modal render', async () => {
     const moreInfoButton = component.container.querySelector('.card__info');
     fireEvent.click(moreInfoButton);
 
+    const modalBody = component.container.querySelector('.modal__dialog');
+    fireEvent.click(modalBody);
+
     const modal = component.container.querySelector('.article');
-    const modalTitle = component.container.querySelector('.article__title');
-    const cuisineType = component.container.querySelector('.cuisine');
-    const modalImage = component.container.querySelector('.article__img');
-    const ingredientTitle = component.container.querySelector('.ingredient-title');
-    const ingridient = component.container.querySelector('.ingredient');
- 
+
     expect(modal).toBeInTheDocument();
-    expect(modalTitle.innerHTML).toBe('Jellyfish Salad');
-    expect(modalImage).toBeInTheDocument();
-    expect(cuisineType.innerHTML).toBe('cuisine type');
-    expect(ingredientTitle).toBeInTheDocument();
-    expect(ingridient).toBeInTheDocument();
-    expect(screen.getByText('full recipe')).toBeInTheDocument();
   });
 });

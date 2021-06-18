@@ -1,13 +1,13 @@
 import { useHistory } from 'react-router-dom';
 
 const useRedirectPath = () => {
-    const history = useHistory();
+  const history = useHistory();
 
-  const setPath = (path) => {    
+  const setPath = (path) => { 
     history.push(path);
   };
 
-  return setPath;
+  return { setPath };
 };
 
 export default useRedirectPath;

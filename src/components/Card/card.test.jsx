@@ -1,12 +1,15 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
-import App from '../../App';
-import { createMemoryHistory } from 'history';
+import { render, fireEvent } from '@testing-library/react';
 import recipe from '../MealInput/dataTest';
+import Card from './';
+
+const setUp = () => {
+  const component = render(<Card info={recipe.hits[0]} />);
+
+  return { component };
+};
 
 describe('<Card /> validation', () => {
-  let component;
+  /*let component;
   beforeEach(() => {
     component = render(
       <App />
@@ -52,7 +55,7 @@ describe('<Card /> validation', () => {
     });
     fireEvent.click(search);
 
-    history.push('/recipes')
+    history.push('/recipes');
     
     await waitFor(() => screen.getByText('results'));
 
@@ -65,7 +68,27 @@ describe('<Card /> validation', () => {
     expect(cardImage).toBeInTheDocument();
     expect(cardTitle.innerHTML).toBe('Jellyfish Salad');
     expect(moreInfo).toBeEnabled();
-    
+  });*/
+
+  test('Card visualization', () => {
+    const { component } = setUp();
+
+    const card = component.container.querySelector('.card');
+    const cardImage = component.container.querySelector('.card__img');
+    const cardTitle = component.container.querySelector('.card__title');
+    const moreInfo = component.container.querySelector('.card__info');
+ 
+    expect(card).toBeInTheDocument();
+    expect(cardImage).toBeInTheDocument();
+    expect(cardTitle.innerHTML).toBe('Jellyfish Salad');
+    expect(moreInfo).toBeEnabled();
+  });
+
+  test.skip('Mock click button', () => {
+    const { component } = setUp();
+
+    const infoButton = component.container.querySelector('.card__info');
+    fireEvent.click(infoButton);
   });
 });
 
