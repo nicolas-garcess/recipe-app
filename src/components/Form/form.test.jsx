@@ -1,6 +1,7 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { createMemoryHistory } from 'history';
 import recipes from '../MealInput/dataTest';
 import App from '../../App';
 
@@ -97,6 +98,8 @@ describe('<Form /> validation', () => {
         return res(ctx.status(200), ctx.json(recipes));
       })
     );
+    
+    const history = createMemoryHistory();
 
     const meal = component.container.querySelector('#meal');
     const cuisine = component.container.querySelector('#cuisineType');
@@ -110,8 +113,10 @@ describe('<Form /> validation', () => {
     });
     fireEvent.click(search);
 
-    const alertMessage = component.container.querySelector('.alert');
+    history.push('/recipes');
 
-    expect(alertMessage).not.toHaveClass('alert-open');
+    await waitFor(() => screen.getByText('results'));
+
+    expect(history.location.pathname).toBe('/recipes');
   });
 });

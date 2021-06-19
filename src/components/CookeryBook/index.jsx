@@ -12,7 +12,7 @@ const CookeryBook = () => {
   const { recipes } = useStore();
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(4);
-  
+
   (() => {
     data = storage !== null ? JSON.parse(storage) : recipes;
   
@@ -38,8 +38,8 @@ const CookeryBook = () => {
   }, [recipes]);
   
   return (
-    <div className="cookerybook">
-      <div className="recipes">
+    <div className="cookerybook" data-testid="cookerybook">
+      <div className="recipes" data-testid="recipes">
         {currentRecipes.map((item, index) => (
           <Card key={index} info={item} />
         ))}

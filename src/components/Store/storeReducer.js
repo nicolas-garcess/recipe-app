@@ -1,19 +1,19 @@
 const TYPES = {
-    FETCH_DATA: 'fetch',
-  };
+  FETCH_DATA: 'fetch',
+};
   
-  const initialStore = {
-    recipes: [],
-  };
-  
-  const storeReducer = (state, action) => {
-    switch (action.type) {
-      case TYPES.FETCH_DATA:
-        return {...state, recipes: action.payload};
-      default:
-        return state;
-    }
-  };
-  
-  export { initialStore, TYPES };
-  export default storeReducer;
+const initialStore = {
+  recipes: [],
+};
+
+const storeReducer = (state, action) => {
+  switch (action.type) {
+    case TYPES.FETCH_DATA:
+      return {...state, recipes: action.payload};
+    default:
+      return state;
+  }
+};
+
+export { initialStore, TYPES };
+export default storeReducer;
