@@ -92,7 +92,11 @@ const Form = () => {
     if (isAnInvalidFormat(input)) {
       setForm({
         ...form,
-        [inputName]: { ...input, invalid: true, invalidMessage: 'Invalid format' },
+        [inputName]: {
+          ...input, 
+          invalid: true, 
+          invalidMessage: 'Invalid format',
+        },
       });
 
       return false;
@@ -116,13 +120,20 @@ const Form = () => {
     if (mealInput.value === '') {
       setForm({
         ...form,
-        meal: {value: mealInput.value, isEmpty: true, invalidMessage: 'Input is empty',},
+        meal: {
+          value: mealInput.value,
+          isEmpty: true, 
+          invalidMessage: 'Input is empty',
+        },
         search: {disable:true},
       });
     } else {
       setForm({
         ...form,
-        meal: {value: mealInput.value.toLowerCase(), isEmpty: false,},
+        meal: {
+          value: mealInput.value.toLowerCase(),
+          isEmpty: false,
+        },
         search: {disable:false},
       });
     }
@@ -138,7 +149,11 @@ const Form = () => {
       if (!decision && input.value !== '') {
         setForm({
           ...form,
-          [input.name]: {value: '', invalid: true, invalidMessage: 'Invalid option',},
+          [input.name]: {
+            value: '',
+            invalid: true,
+            invalidMessage: 'Invalid option',
+          },
           search: {disable:true},
         });
       } else {

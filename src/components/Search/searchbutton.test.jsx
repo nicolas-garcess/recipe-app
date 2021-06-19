@@ -58,6 +58,7 @@ describe('<Search /> validation', () => {
     const searchButton = screen.getByTestId('search-button');
     fireEvent.click(searchButton);
 
+    expect(searchButton).toBeDisabled();
     expect(mockSearch).toHaveBeenCalledTimes(0);
     expect(searchButton).not.toHaveClass('enable');
   });
@@ -73,7 +74,8 @@ describe('<Search /> validation', () => {
     
     const searchButton = screen.getByTestId('search-button');
     fireEvent.click(searchButton);
-
+    
+    expect(searchButton).toBeEnabled();
     expect(mockSearch).toHaveBeenCalledTimes(1);
     expect(searchButton).toHaveClass('enable');
   });

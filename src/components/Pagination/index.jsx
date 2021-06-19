@@ -16,6 +16,7 @@ const Pagination = ({ recipesPerPage, allRecipe, paginate, curretPage }) => {
               onClick={(e) => paginate(page, e)}
               href="!#"
               className="page-link"
+              data-testid={`${page}-page`}
               {...((curretPage === page) ? {"aria-current": "page"}: {})}
             >
               <span className="visuallyhidden">page</span>
