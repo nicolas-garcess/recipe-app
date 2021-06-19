@@ -2,7 +2,6 @@ import Modal from '../Modal';
 import './index.css';
 
 const InfoModal = ({ info, isOpen, closeModal }) => {
-
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
       <article className="article">
@@ -31,7 +30,8 @@ const InfoModal = ({ info, isOpen, closeModal }) => {
           <div className="external-link">
             <a
               href={info.recipe.url}
-              aria-label={`Read more about ${info.recipe.label} recipe`} target="blank"
+              aria-label={`Read more about ${info.recipe.label} recipe`}
+              target="blank"
             > 
               full recipe
             </a>

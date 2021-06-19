@@ -10,8 +10,8 @@
 }
 
 .article__title {
-    font-size: 2em;
-    color: darkred;
+    font-size: 1.5em;
+    color: rgb(138, 0, 0);
     margin: 10px 0 0;
 }
 
@@ -33,7 +33,7 @@
 
 .container-cuisine p {
     margin-left: 10px;
-    color: darkred;
+    color: rgb(139, 0, 0);
 }
 
 .cuisine {

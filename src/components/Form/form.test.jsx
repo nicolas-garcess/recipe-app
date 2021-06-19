@@ -5,7 +5,6 @@ import { createMemoryHistory } from 'history';
 import recipes from '../MealInput/dataTest';
 import App from '../../App';
 
-
 describe('<Form /> validation', () => {
   let component;
   beforeEach(() => {

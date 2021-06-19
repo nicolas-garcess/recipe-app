@@ -9,6 +9,6 @@
 .title {
     font-size: 4em;
     margin: 10px;
-    color: darkred;
+    color: rgb(139, 0, 0);
     text-transform: capitalize;
 }

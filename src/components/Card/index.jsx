@@ -7,7 +7,11 @@ const Card = ({ info }) => {
 
   return (
     <div className="card">
-      <img className="card__img" src={info.recipe.image} alt={info.recipe.label} />
+      <img
+        className="card__img"
+        src={info.recipe.image}
+        alt={info.recipe.label}
+      />
       <div>
         <p className="card__title">{info.recipe.label}</p>
       </div>

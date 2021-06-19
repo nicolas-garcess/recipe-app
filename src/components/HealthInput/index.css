@@ -13,7 +13,7 @@
 .health-container__label {
     display: block;
     font-size: 30px;
-    color: darkred;
+    color: rgb(139, 0, 0);
     font-weight: bold;
 }
 
@@ -24,7 +24,7 @@
     padding-left: 10px;
     border: 1px solid rgba(128, 128, 128, 0.452);
     border-radius: 20px;
-    background-color: #fffaf0;
+    background-color: rgb(255, 250, 240);
 
     font-size: 1.5em;
 }

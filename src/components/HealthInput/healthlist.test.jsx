@@ -1,23 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import HealthInput from './';
 
-/*describe('<HealthList /> validation', () => {
-  let component;
-  beforeEach(() => {
-    component = render(
-      <App />
-    );
-  });
-
-  test('Health input', () => {
-    const health = component.container.querySelector('#health');
-    
-    fireEvent.change(health, {target: {value: 'alcohol-free'}});
-
-    expect(health.value).toBe('alcohol-free');
-  });
-});*/
-
 describe('<HealthList /> validation', () => {
   test('Change value of health', () => {
     let mockValidation = jest.fn();

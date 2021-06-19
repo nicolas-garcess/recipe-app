@@ -10,6 +10,7 @@ import Search from '../Search';
 import Alert from '../Alert';
 import fetchAPI from '../../services/api/fetchAPI';
 import chooseList from '../../services/listTypes';
+import useAlert from '../../hooks/useAlert';
 
 const formInitialState = {
   meal: {
@@ -33,16 +34,11 @@ const formInitialState = {
   },
 };
 
-const initialAlert = {
-  message: '',
-  invalid: false,
-};
-
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
-  const [alertPopUp, setAlertPopUp] = useState(initialAlert);
+  const {enableAlert, closeAlert, alert} = useAlert();
   const dispatch = useDispatch();
-  const { setPath } = useRedirectPath();
+  const {setPath} = useRedirectPath();
   //console.log("hola");
 
   const searchRecipe = async (e) => {
@@ -55,7 +51,7 @@ const Form = () => {
           const data = await fetchAPI(form);
           
           if (data === null) {
-            handleAlertPopUp('There was an error with the query. Keep trying', true);
+            enableAlert('There was an error with the query. Keep trying');
           } else if (data.hits.length > 0) {    
             let recipes = data.hits;
             
@@ -66,26 +62,11 @@ const Form = () => {
 
             setPath('/recipes');
           } else {
-            handleAlertPopUp('No results found', true);
+            enableAlert('No results found');
           }
     } else {
-      handleAlertPopUp('Invalid format', true);
+      enableAlert('Invalid format');
     }
-  };
-
-  const closeAlert = (e) => {
-    e.preventDefault();
-    setAlertPopUp({
-      message: '',
-      invalid: false,
-    });
-  };
-
-  const handleAlertPopUp = (message, invalid) => {
-    setAlertPopUp({
-      message,
-      invalid,
-    });
   };
 
   const isInputCorrect = (input, inputName) => {
@@ -190,8 +171,8 @@ const Form = () => {
         />
         <Search searchInfo={searchRecipe} isDisable={form.search.disable} />
         <Alert
-          message={alertPopUp.message}
-          invalid={alertPopUp.invalid}
+          message={alert.message}
+          invalid={alert.invalid}
           closeAlert={closeAlert}
         />
       </fieldset>
