@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Recipes aplication
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This aplication allows you to search a lot of recipes to prepare your desire meal; you can enter a meal, health and cuisine type. You will find a picture of the plate, the recipe name and ingredients.
 
-## Available Scripts
+## Run the aplication
 
-In the project directory, you can run:
+First you must clone the repository:
 
-### `yarn start`
+```
+git clone https://github.com/nicolas-garcess/recipe-app.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Or download the .zip file.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+When you have the project in your desktop already, you must run in the terminal this command:
 
-### `yarn test`
+```
+yarn start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To test the aplication run this command:
 
-### `yarn build`
+```
+yarn test --coverage --watchAll
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Decisions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. "@testing-library/react-hooks" is used to test the hooks.
+2. "msw" is used to mock the API fetch.
+3. "react-router-dom" is used to manage the routing between pages.
 
-### `yarn eject`
+### Technical decisions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. The hook useReducer is used to manage the states of the aplication readily. 
+2. Is used global context to a allow every component to access the information, avoiding a props flow through components.
+3. The information was fetched from this public API: [Edamam](https://developer.edamam.com/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deploy on heroku
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can try the application. [Recipes app]()
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
