@@ -6,6 +6,7 @@ const LIST_TYPE = {
     CUISINE: 'cuisineType',  
 };
 
+// Define the list than will be shown 
 const chooseList = (listName) => {
     switch (listName) {
       case LIST_TYPE.HEATLH:

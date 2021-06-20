@@ -1,5 +1,6 @@
 import makeURL from './url';
 
+// To fetch the data in the API
 const fetchAPI = async (form) => {
     try {      
       let response = await fetch(makeURL(form));

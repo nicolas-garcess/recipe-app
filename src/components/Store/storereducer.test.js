@@ -13,7 +13,6 @@ describe('storeReducer validation', () => {
         type: TYPES.FETCH_DATA,
         payload: recipes.hits,
       });
-      
     });
 
     expect(result.current[0].recipes).toStrictEqual(recipes.hits);

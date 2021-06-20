@@ -1,6 +1,8 @@
+// Copyright Luis Cabrera at https://www.youtube.com/watch?v=UVBUhi5Oaiw
 import { createContext, useContext, useReducer } from 'react';
 import storeReducer, { initialStore } from './storeReducer';
 
+// Create the context that every component can access to
 const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {

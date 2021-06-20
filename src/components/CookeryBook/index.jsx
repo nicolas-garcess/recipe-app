@@ -13,6 +13,7 @@ const CookeryBook = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(4);
 
+  // Set the array to render and the recipes that will be shown per page
   (() => {
     data = storage !== null ? JSON.parse(storage) : recipes;
   
@@ -27,6 +28,7 @@ const CookeryBook = () => {
     setCurrentPage(pageNumber);
   };
 
+  // Save or delete the data that is needed to be shown
   useEffect(() => {
     if (storage === null) {
       sessionStorage.setItem('recipes', JSON.stringify(recipes));

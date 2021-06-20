@@ -6,6 +6,7 @@ const initialStore = {
   recipes: [],
 };
 
+// Reducer actions
 const storeReducer = (state, action) => {
   switch (action.type) {
     case TYPES.FETCH_DATA:

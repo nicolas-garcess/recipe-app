@@ -1,10 +1,10 @@
-# Recipes aplication
+# Recipes application
 
-This aplication allows you to search a lot of recipes to prepare your desire meal; you can enter a meal, health and type of cuisine. You will find a picture of the plate, the recipe name and ingredients.
+This application allows you to search form many recipes to prepare your desire meal; you can enter a meal, health, and type of cuisine. You will find a picture of the plate, the recipe name, and ingredients.
 
-## Run the aplication
+## Run the application
 
-First you must clone the repository:
+First, you have to clone the repository:
 
 ```
 git clone https://github.com/nicolas-garcess/recipe-app.git
@@ -12,13 +12,13 @@ git clone https://github.com/nicolas-garcess/recipe-app.git
 
 Or download the .zip file.
 
-When you have the project in your desktop already, you must run in the terminal this command:
+When you have the project on your desktop already, you have to run in the terminal:
 
 ```
 yarn start
 ```
 
-To test the aplication run this command:
+To test the application run this command:
 
 ```
 yarn test --coverage --watchAll
@@ -34,11 +34,11 @@ yarn test --coverage --watchAll
 
 ### Technical decisions
 
-1. The hook useReducer is used to manage the states of the aplication readily. 
-2. Is used global context to a allow every component to access the information, avoiding a props flow through components.
-3. The information was fetched from this public API: [Edamam](https://developer.edamam.com/).
+1. The hook useReducer is used to manage the states of the application readily. 
+2. It used global context to allow every component to access the information, avoiding a props flow through components.
+3. The data was fetched from this public API: [Edamam](https://developer.edamam.com/).
 
-## Deploy on heroku
+## Deploy on Heroku
 
 You can try the application. [Recipes app](https://cookerybook-app.herokuapp.com/)
 

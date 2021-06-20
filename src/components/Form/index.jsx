@@ -36,10 +36,11 @@ const formInitialState = {
 
 const Form = () => {
   const [form, setForm] = useState(formInitialState);
-  const {enableAlert, closeAlert, alert} = useAlert();
+  const { enableAlert, closeAlert, alert } = useAlert();
   const dispatch = useDispatch();
-  const {setPath} = useRedirectPath();
+  const { setPath } = useRedirectPath();
 
+  // Define the situation when the client click on search button
   const searchRecipe = async (e) => {
     e.preventDefault();
     
@@ -68,6 +69,7 @@ const Form = () => {
     }
   };
 
+  // Decide if the meal value has a wrong format
   const isInputCorrect = (input, inputName) => {
     if (isAnInvalidFormat(input)) {
       setForm({
@@ -94,6 +96,7 @@ const Form = () => {
            || form.meal.value === '';
   };
 
+  // Set if the meal value is valid or invalid
   const handleMealChange = (e) => {
     const mealInput = e.target;
 
@@ -119,6 +122,7 @@ const Form = () => {
     }
   };
 
+  // Set if the input value of any list is valid or invalid
   const handleListChange = (e) => {
     const input = e.target;
 

@@ -8,9 +8,11 @@ const Search = ({ searchInfo, isDisable }) => {
         disabled={isDisable}
         className={`search-container__button ${!isDisable ? "enable" : ""}`}
         data-testid="search-button"
+        aria-describedby="searchButton"
       >
         search
       </button>
+      <div className="visuallyhidden" id="searchButton">You will see all recipes clicking on this button</div>
     </div>
   );
 };

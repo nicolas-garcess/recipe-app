@@ -16,7 +16,15 @@ const Card = ({ info }) => {
         <p className="card__title">{info.recipe.label}</p>
       </div>
       <div className="card__button" role="button">
-        <button onClick={openModal} className="card__info">more info</button>
+        <button
+          onClick={openModal}
+          className="card__info"
+          aria-label="open"
+          aria-describedby="openModalButton"
+        >
+          more info
+        </button>
+        <div className="visuallyhidden" id="openModalButton">Open the modal you can acces to more information of the recipe</div>
       </div>
       <InfoModal info={info} isOpen={isOpenModal} closeModal={closeModal} />
     </div>

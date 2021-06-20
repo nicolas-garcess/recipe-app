@@ -2,7 +2,8 @@ import './index.css';
 
 const Pagination = ({ recipesPerPage, allRecipe, paginate, curretPage }) => {
   const pageNumbers = [];
-
+  
+  // Define the number of pages that are needed to show all the recipes
   for (let i = 1; i <= Math.ceil(allRecipe / recipesPerPage); i++) {
     pageNumbers.push(i);
   }
