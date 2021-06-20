@@ -1,6 +1,6 @@
 const makeURL = (form) => {
-    const APP_ID = 'ccdedd84';
-    const APP_KEY = '99f4720abfe124d1e696c539b77ec27c';
+    const APP_ID = process.env.REACT_APP_ID;
+    const APP_KEY = process.env.REACT_APP_KEY;
 
     let url = `https://api.edamam.com/api/recipes/v2?type=public&q=`
 
