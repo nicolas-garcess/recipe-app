@@ -24,7 +24,13 @@
     padding-left: 10px;
     border: 1px solid rgba(128, 128, 128, 0.452);;
     border-radius: 20px;
+    outline-style: none;
     background-color: rgb(255, 250, 240);
-
     font-size: 1.5em;
+}
+
+.cuisineType-container__input:focus {
+    border: 1px solid rgb(139, 0, 0);
+    box-shadow: 1px 1px 8px 1px rgb(139, 0, 0);
+    outline-style: none;
 }

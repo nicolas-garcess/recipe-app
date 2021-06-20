@@ -1,6 +1,6 @@
 # Recipes aplication
 
-This aplication allows you to search a lot of recipes to prepare your desire meal; you can enter a meal, health and cuisine type. You will find a picture of the plate, the recipe name and ingredients.
+This aplication allows you to search a lot of recipes to prepare your desire meal; you can enter a meal, health and type of cuisine. You will find a picture of the plate, the recipe name and ingredients.
 
 ## Run the aplication
 
@@ -40,6 +40,6 @@ yarn test --coverage --watchAll
 
 ## Deploy on heroku
 
-You can try the application. [Recipes app]()
+You can try the application. [Recipes app](https://cookerybook-app.herokuapp.com/)
 
 

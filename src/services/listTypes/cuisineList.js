@@ -44,6 +44,10 @@ const cuisineList = [
         value: 'Japanese',
     },
     {
+        label: 'kosher',
+        value: 'Kosher',
+    },
+    {
         label: 'mediterranean',
         value: 'Mediterranean',
     },
@@ -56,8 +60,16 @@ const cuisineList = [
         value: 'Middle Eastern',
     },
     {
+        label: 'nordic',
+        value: 'Nordic',
+    },
+    {
         label: 'south american',
         value: 'South American',
+    },
+    {
+        label: 'south east asian',
+        value: 'South East Asian',
     },
 ];
 

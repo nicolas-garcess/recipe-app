@@ -4,7 +4,7 @@ import cuisineList from '../../services/listTypes/cuisineList';
 const CuisineType = ({ name, inputValidation, invalid, invalidMessage }) => {
   return (
     <div className={`${name}-container`}>
-      <label htmlFor={name} className={`${name}-container__label`}>cuisine type</label>
+      <label htmlFor={name} className={`${name}-container__label`}>cuisine</label>
       <select
         id={name}
         name={name}

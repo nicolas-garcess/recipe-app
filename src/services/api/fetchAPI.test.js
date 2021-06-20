@@ -44,4 +44,16 @@ describe('Fetch API validation', () => {
 
     expect(data).toBeNull();
   });
+
+  test('Bad response 403', async () => {
+    server.use(
+      rest.get('https://api.edamam.com/api/recipes/v2', (req, res, ctx) => {
+        return res(ctx.status(403), ctx.json({}), ctx.ok(false));
+      })
+    );
+
+    const data = await fetchAPI('https://api.edamam.com/api/recipes/v2');
+
+    expect(data).toBeNull();
+  });
 });

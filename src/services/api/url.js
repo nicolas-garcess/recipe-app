@@ -11,8 +11,8 @@ const makeURL = (form) => {
       } else if (form[key].value !== '' && !form[key].invalid && key !== 'search') {
         url = `${url}&${key}=${form[key].value}`;
       }
-    }    
-    
+    }
+
     return url;
 };
 

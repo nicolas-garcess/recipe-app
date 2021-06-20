@@ -39,7 +39,6 @@ const Form = () => {
   const {enableAlert, closeAlert, alert} = useAlert();
   const dispatch = useDispatch();
   const {setPath} = useRedirectPath();
-  //console.log("hola");
 
   const searchRecipe = async (e) => {
     e.preventDefault();

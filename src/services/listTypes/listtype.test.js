@@ -14,5 +14,4 @@ describe('Choose List validation', () => {
   test('Should return cuisine list', () => {
     expect(chooseList('cuisineType')).toBe(cuisine);
   });
-
 });

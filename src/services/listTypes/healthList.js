@@ -8,10 +8,6 @@ const healthList = [
         value: 'celery-free',
     },
     {
-        label: 'crustacean free',
-        value: 'crustacean-free',
-    },
-    {
         label: 'dairy free',
         value: 'dairy-free',
     },
@@ -32,8 +28,32 @@ const healthList = [
         value: 'gluten-free',
     },
     {
+        label: 'immuno supportive',
+        value: 'immuno-supportive',
+    },
+    {
+        label: 'keto friendly',
+        value: 'keto-friendly',
+    },
+    {
+        label: 'kidney friendly',
+        value: 'kidney-friendly',
+    },
+    {
+        label: 'kosher',
+        value: 'kosher',
+    },
+    {
         label: 'low sugar',
         value: 'low-sugar',
+    },
+    {
+        label: 'mustard free',
+        value: 'mustard-free',
+    },
+    {
+        label: 'no oil added',
+        value: 'no-oil-added',
     },
     {
         label: 'peanut free',
@@ -48,12 +68,20 @@ const healthList = [
         value: 'red-meat-free',
     },
     {
+        label: 'soy free',
+        value: 'soy-free',
+    },
+    {
         label: 'vegan',
         value: 'vegan',
     },
     {
         label: 'vegetarian',
         value: 'vegetarian',
+    },
+    {
+        label: 'wheat free',
+        value: 'wheat-free',
     },
 ];
 

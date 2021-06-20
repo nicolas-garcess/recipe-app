@@ -27,9 +27,9 @@
 }
 
 .meal-container__input:focus {
-    border-color: unset;
-    outline: 1px solid rgb(139, 0, 0);
-    box-shadow: 1px 1px 8px 1px rgb(139, 0, 0);
+    border: 1px solid rgb(139, 0, 0);
+    box-shadow: 1px 1px 10px 1px rgb(139, 0, 0);
+    outline-style: none;
 }
 
 .error {
