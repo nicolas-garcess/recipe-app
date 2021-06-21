@@ -90,10 +90,11 @@ const Form = () => {
   const isAnInvalidFormat = (input) => {
     const FORMAT_SPECIAL_CHARS = /[`!@#$%^&*()_+\-=[\]{};:"\\|,.<>/¿?~]/;
     const FORMAT_NUMBERS = /\d/;
+    const FORMAT_EMPTY_SPACE = /^ *$/;
 
     return FORMAT_SPECIAL_CHARS.test(input.value) 
            || FORMAT_NUMBERS.test(input.value)
-           || form.meal.value === '';
+           || FORMAT_EMPTY_SPACE.test(input.value);
   };
 
   // Set if the meal value is valid or invalid
@@ -128,9 +129,8 @@ const Form = () => {
 
     let list = chooseList(input.name);
     if (list !== undefined) {
-      const decision = list.some((item) => item.value === input.value);
-
-      if (!decision && input.value !== '') {
+      
+      if (!isOptionInTheList(list, input) && input.value !== '') {
         setForm({
           ...form,
           [input.name]: {
@@ -148,6 +148,10 @@ const Form = () => {
         });
       }
     }
+  };
+
+  const isOptionInTheList = (list, input) => {
+    return list.some((item) => item.value === input.value);
   };
 
   return (

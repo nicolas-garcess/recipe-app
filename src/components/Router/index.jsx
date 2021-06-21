@@ -5,6 +5,7 @@ import Header from '../Header';
 import CookeryBook from '../CookeryBook';
 import Main from '../Main';
 import Error from '../Error';
+import StoreProvider from '../Store/StoreProvider';
 
 const Router = () => {
   return (
@@ -12,17 +13,21 @@ const Router = () => {
       <Switch>
         <Route exact path="/">
           <Layout>
-            <Main>
-              <Form />
-            </Main>
+            <StoreProvider>
+              <Main>
+                <Form />
+              </Main>
+            </StoreProvider>
           </Layout>
         </Route>
         <Route exact path="/recipes">
           <Layout>
-            <Header title="results" />
-            <Main> 
-              <CookeryBook />
-            </Main>
+            <StoreProvider>
+              <Header title="results" />
+              <Main> 
+                <CookeryBook />
+              </Main>
+            </StoreProvider>
           </Layout>
         </Route>
         <Route path="*">

@@ -31,12 +31,44 @@ describe('<Form /> validation', () => {
     server.close();
   });
 
-  test('Invalid meal', () => {
+  test('Meal with special characters', () => {
     const meal = component.container.querySelector('#meal');
     const search = component.getByText('search');
 
     fireEvent.change(meal, {
       target: {value: 'meat-'}
+    });
+    fireEvent.click(search);
+
+    const error = component.container.querySelector('.show');
+    const message = component.container.querySelector('.alert__message');
+
+    expect(error).toBeInTheDocument();
+    expect(message.innerHTML).toBe('Invalid format');
+  });
+
+  test('Meal with numbers', () => {
+    const meal = component.container.querySelector('#meal');
+    const search = component.getByText('search');
+
+    fireEvent.change(meal, {
+      target: {value: 'meat96'}
+    });
+    fireEvent.click(search);
+
+    const error = component.container.querySelector('.show');
+    const message = component.container.querySelector('.alert__message');
+
+    expect(error).toBeInTheDocument();
+    expect(message.innerHTML).toBe('Invalid format');
+  });
+
+  test('Empty meal', () => {
+    const meal = component.container.querySelector('#meal');
+    const search = component.getByText('search');
+
+    fireEvent.change(meal, {
+      target: {value: '    '}
     });
     fireEvent.click(search);
 
